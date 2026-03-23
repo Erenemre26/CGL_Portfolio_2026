@@ -1,0 +1,630 @@
+/* ====== Body & Grundlayout ====== */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: radial-gradient(circle at top, #0a0f1f, #05070f);
+    color: white;
+    scroll-behavior: smooth;
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;           
+    top: 0;
+    width: 100%;
+    padding: 10px 0;
+    z-index: 1000;
+    backdrop-filter: blur(20px);      /* Hintergrundunschärfe */
+    background: rgba(15, 23, 42, 0.5); /* halbtransparent */
+    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+}
+
+/* Navbar Links */
+.navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: center; 
+    margin: 0;
+    padding: 0;
+    gap: 40px;
+}
+
+.navbar li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: background 0.3s, color 0.3s;
+}
+
+/* Hover Effekt */
+.navbar li a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #4facfe;
+}
+
+/* ====== Hero Section ====== */
+/* Hero Section */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    background: #0a0f1f; /* Dunkelblau Hintergrund */
+    overflow: hidden;
+}
+
+/* Hero Name Farbverlauf */
+.hero h1 .name {
+    background: linear-gradient(90deg, #39549c, #4facfe);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Hero Text */
+.hero p {
+    color: #9ca3af;
+    margin: 15px 0 30px 0;
+}
+
+/* Hero Button */
+.btn-view {
+    padding: 12px 28px;
+    background: linear-gradient(90deg, #4facfe, #a855f7);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 1rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.btn-view:hover {
+    transform: scale(1.05);
+}
+
+/* Große Bubbles (pseudo) */
+.hero::before, .hero::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(79,172,254,0.2) 0%, rgba(79,172,254,0) 70%);
+    pointer-events: none;
+}
+
+/* Links oben */
+.hero::before {
+    width: 400px;
+    height: 400px;
+    top: -100px;
+    left: -150px;
+}
+
+/* Rechts unten */
+.hero::after {
+    width: 500px;
+    height: 500px;
+    bottom: -150px;
+    right: -200px;
+}
+
+/* Kleine / mittlere / große Bubbles */
+.bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(79,172,254,0.15) 0%, rgba(79,172,254,0) 70%);
+    pointer-events: none;
+}
+
+.bubble.small {
+    width: 80px;
+    height: 80px;
+    bottom: 150px;
+    right: 200px;
+}
+
+.bubble.small {
+    width: 80px;
+    height: 80px;
+    bottom: 500px;
+    left: 200px;
+}
+.bubble.medium {
+    width: 120px;
+    height: 120px;
+    bottom: -40px;
+    left: 200px;
+}
+.bubble.large {
+    width: 180px;
+    height: 180px;
+    bottom: 200px;
+    right: 180px;
+}
+
+/* Position der einzelnen Kreise */
+.bubble.small:nth-child(1) { top: 120px; left: 60px; }
+.bubble.small:nth-child(2) { top: 250px; right: 100px; }
+.bubble.small:nth-child(3) { bottom: 180px; left: 150px; }
+
+.bubble.medium:nth-child(4) { top: 350px; left: 200px; }
+.bubble.medium:nth-child(5) { bottom: 100px; right: 150px; }
+
+.bubble.large:nth-child(6) { top: 100px; right: 300px; }
+.bubble.large:nth-child(7) { bottom: 150px; left: -50px; }
+
+.hero h1 {
+    font-size: 3rem;
+    background: linear-gradient(90deg, #4facfe, #a855f7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    color: #cbd5e1;
+    font-size: 1.2rem;
+    margin: 20px 0;
+}
+
+.btn-view {
+    display: inline-block;
+    padding: 12px 30px;
+    background: linear-gradient(145deg, #0f172a, #020617);
+    color: #fff;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.4s;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-view::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent, #4facfe, #a855f7, transparent);
+    opacity: 0;
+    transition: 0.4s;
+}
+
+.btn-view:hover::before {
+    opacity: 0.25;
+}
+
+.btn-view:hover {
+    transform: translateY(-5px) scale(1.03);
+}
+
+
+
+
+/* --- About Me Sektion Layout --- */
+
+.about-container {
+    display: flex;
+    align-items: center; /* Zentriert Text und Bild vertikal */
+    justify-content: center;
+    gap: 80px; /* Großzügiger Abstand zwischen Text und Bild */
+    max-width: 1100px;
+    margin: 100px auto;
+    padding: 0 40px;
+}
+
+.about-text {
+    flex: 1.5; /* Gibt dem Text etwas mehr Platz */
+    text-align: left;
+}
+
+.about-text h1 {
+    font-size: 3rem;
+    margin-bottom: 25px;
+    background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.about-text p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #cbd5e1;
+    margin-bottom: 20px;
+}
+
+/* --- Dein Porträtbild Styling --- */
+
+.about-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 380px; /* Damit das Bild nicht zu riesig wird */
+    aspect-ratio: 1 / 1; /* Macht das Bild quadratisch */
+    object-fit: cover; /* Verhindert, dass das Gesicht verzerrt wird */
+    border-radius: 30px; /* Moderne, stark abgerundete Ecken */
+    border: 2px solid rgba(255, 255, 255, 0.1); /* Subtiler Rahmen */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); /* Tiefe durch Schatten */
+    transition: transform 0.3s ease;
+}
+
+.about-image img:hover {
+    transform: scale(1.02); /* Minimaler Zoom beim Drüberfahren */
+}
+
+/* Mobil-Ansicht: Bild über dem Text */
+@media (max-width: 900px) {
+    .about-container {
+        flex-direction: column-reverse; /* Bild oben, Text unten */
+        text-align: center;
+        gap: 40px;
+    }
+    
+    .about-text {
+        text-align: center;
+    }
+
+    .about-image img {
+        max-width: 280px;
+    }
+}
+
+/* Karten-Styling (Einrahmung wie bei Game Projects) */
+.project-item.stack-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 25px;
+    backdrop-filter: blur(15px);
+    text-align: left;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.project-item.stack-item:hover {
+    transform: translateY(-5px); /* Kleiner Hover-Effekt */
+}
+
+.project-item.stack-item h3 {
+    margin-top: 0;
+    color: #4facfe; /* Blau-Ton für die Karten-Titel */
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+.project-item.stack-item p {
+    font-size: 0.95rem;
+    color: #94a3b8;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.project-item.stack-item img {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    display: block;
+}
+
+/* Mobil-Optimierung (untereinander auf Handys) */
+@media (max-width: 1000px) {
+    .about-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+    }
+    .about-text {
+        text-align: center;
+        position: static;
+    }
+    .about-images-stack {
+        width: 100%;
+    }
+}
+
+
+
+/* Alle Sektionen */
+.section {
+    padding: 80px 20px;
+    text-align: center;  /* Texte mittig */
+}
+
+.section h2 {
+    font-size: 2rem;
+    color: #4facfe; 
+    margin-bottom: 20px;
+}
+
+.section p {
+    font-size: 1rem;
+    max-width: 800px;
+    margin: 0 auto;  /* zentriert */
+    line-height: 1.6;
+}
+
+/* Skills Logos Section */
+.skills-logos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.skill {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100px;
+    transition: transform 0.3s;
+}
+
+.skill img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: 10px;
+    filter: grayscale(50%);
+    transition: filter 0.3s, transform 0.3s;
+    background: rgba(255, 255, 255, 0.05); /* leichter Hintergrund für Transparenz */
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.skill p {
+    color: white;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* Hover-Effekt */
+.skill:hover img {
+    filter: none; /* Farbe wiederherstellen */
+    transform: scale(1.2); /* Leicht vergrößern */
+}
+
+
+/* Container */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+/* Karten / Buttons */
+.card {
+    width: 340px;
+    height: 180px;
+    border-radius: 18px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s;
+
+    /* Hintergrund: obere Hälfte Farbverlauf, untere Hälfte schwarz */
+    background: linear-gradient(
+        to bottom,
+        #4facfe 0%,     /* hellblau oben */
+        #3b82f6 50%,    /* dunkelblau oben */
+        #0f172a 50%,    /* schwarze Hälfte beginnt */
+        #0f172a 100%
+    );
+}
+
+/* ueberschrift auf der Farbflache, knapp uber schwarz */
+.card h3 {
+    position: absolute;
+    left: 20px;       /* Abstand von links */
+    bottom: 25px;     /* Abstand uber schwarzer Halfte */
+    margin: 0;
+    font-size: 1.2rem;
+    color: white;
+}
+
+/* Hover Effekt */
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent, white, transparent);
+    opacity: 0;
+    transition: 0.4s;
+}
+
+.card:hover::before {
+    opacity: 0.15;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.05);
+}
+
+/* Farbvarianten */
+.card:nth-child(2) {
+    background: linear-gradient(
+        to bottom,
+        #a855f7 0%,  /* lila */
+        #ec4899 50%, /* pink */
+        #0f172a 50%,
+        #0f172a 100%
+    );
+}
+
+.card:nth-child(3) {
+    background: linear-gradient(
+        to bottom,
+        #f97316 0%,  /* orange */
+        #fcd34d 50%, /* gelb */
+        #0f172a 50%,
+        #0f172a 100%
+    );
+}
+
+
+/* ====== Contact Links ====== */
+#contact a {
+    color: #4facfe;
+    text-decoration: none;
+}
+
+#contact a:hover {
+    color: #a855f7;
+}
+
+/* =========================
+   PROJECT GRID – 2 SPALTEN
+========================= */
+
+.project-wrapper {
+    max-width: 1200px;
+    margin: 140px auto;
+    padding: 20px;
+    text-align: center;
+    /* Entferne feste Höhen, falls du welche hattest */
+    height: auto; 
+}
+
+/* Container für das gesamte Grid */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Sorgt für nebeneinanderliegende Boxen */
+    gap: 40px;
+    padding: 20px;
+    align-items: start;
+}
+
+/* Die einzelnen Projekt-Karten */
+.project-item {
+    background: rgba(255, 255, 255, 0.03); /* Ganz subtiler Hintergrund */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 25px;
+    text-align: left; /* Text linksbündig für bessere Lesbarkeit */
+    backdrop-filter: blur(10px);
+}
+
+.project-item h3 {
+    margin-top: 0;
+    color: #4facfe; /* Passend zu deinem Theme */
+}
+
+.project-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin-top: 20px;
+    display: block;
+}
+
+
+.project-item p {
+    color: #9ca3af;
+    font-size: 0.95rem;
+    max-width: 500px;
+    margin: 10px auto;
+    line-height: 1.5;
+}
+
+/* Wenn Bildschirm kleiner → untereinander */
+@media (max-width: 900px) {
+    .project-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+}
+
+
+.back-home {
+    position: absolute;
+    top: 40px;
+    left: 60px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+/* Farben je Seite */
+
+.game-theme .back-home {
+    color: #4facfe;
+}
+
+.animation-theme .back-home {
+    color: #ec4899;
+}
+
+.drawings-theme .back-home {
+    color: #f97316;
+}
+
+.back-home:hover {
+    opacity: 0.7;
+}
+
+
+/* =========================
+   BACK BUTTON RECTANGLE
+========================= */
+
+.back-home {
+    position: absolute;
+    top: 35px;
+    left: 60px;
+
+    padding: 8px 18px;
+    border-radius: 8px;
+
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+
+    color: #ffffff !important;          /* ← TEXT IMMER WEISS */
+    display: inline-block;       /* wichtig für Button-Verhalten */
+
+    transition: 0.25s ease;
+}
+
+/* Auch im Hover-Zustand weiß lassen */
+.back-home:hover {
+    color: #ffffff;
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+
+/* GAME – hellblau */
+.game-theme .back-home {
+    background: linear-gradient(90deg, #4facfe, #00f2fe);
+}
+
+/* ANIMATION – pink/lila */
+.Web-Development-theme .back-home {
+    background: linear-gradient(90deg, #e44594, #a855f7);
+}
+
+/* DRAWINGS – orange */
+.Technical-Profile-theme .back-home {
+    background: linear-gradient(90deg, #f97316, #fb923c);
+}
+
+/* Picture */ 
+img {
+  transition: transform 0.3s ease;
+}
+
+img:hover {
+  transform: scale(1.05);
+}
+
